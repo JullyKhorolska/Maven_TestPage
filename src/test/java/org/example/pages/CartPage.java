@@ -1,12 +1,11 @@
 package org.example.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class BasketPage extends InitWebDriver{
+public class CartPage extends InitWebDriver{
     @FindBy(id = "#add-to-cart-sauce-labs-bike-light")
     private WebElement addToCardSauceLabsBikeLight;
     @FindBy(id = "#add-to-cart-sauce-labs-backpack")
@@ -17,7 +16,7 @@ public class BasketPage extends InitWebDriver{
     @FindBy(id = "#react-burger-menu-btn")
     private WebElement logOut;
 
-      public BasketPage(WebDriver driver) {
+      public CartPage(WebDriver driver) {
         super(driver);
           PageFactory.initElements(webDriver,this);
     }
@@ -29,12 +28,12 @@ public class BasketPage extends InitWebDriver{
         if(addToCardSauceLabsBikeLight.getText().equals("Sauce Labs Bike Light")) return true;
         else return false;
     }
-    public BasketPage clickButtonRectBurger(){
+    public CartPage clickButtonRectBurger(){
         btnReactBurgerMenu.click();
           return this;
     }
-    public BasketPage clickLogOut(){
+    public LoginPage clickLogOut(){
         logOut.click();
-        return this;
+        return new LoginPage(webDriver);
     }
 }

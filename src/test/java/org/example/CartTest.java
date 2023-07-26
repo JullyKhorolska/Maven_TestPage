@@ -1,23 +1,21 @@
 package org.example;
 
+import org.example.pages.CartPage;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.By;
 
-public class CardTest extends InitDriver{
-    public CardTest cardTest;
-
-    public CardTest(WebDriver chromeDriver) {
-        super();
-    }
-
+public class CartTest extends InitDriver{
+    public CartPage cartPage;
     @BeforeEach
-    public void cardTest(){
-        chromeDriver.get("https://www.saucedemo.com/inventory.html");
-        cardTest = new CardTest(chromeDriver);
+    public void cartTest(){
+        chromeDriver.get("https://www.saucedemo.com/cart.html");
+        cartPage = new CartPage(chromeDriver);
     }
     @Test
-    public void elementsInCard(){
-        chromeDriver.get("");
+    public void logOutTest(){
+       cartPage.clickButtonRectBurger().clickLogOut();
+        Assertions.assertEquals(chromeDriver.findElement(By.cssSelector("div.login_logo")).getText(),"Swag Labs");
     }
 }
